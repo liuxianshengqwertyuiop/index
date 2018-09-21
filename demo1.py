@@ -32,3 +32,45 @@ if __name__ == '__main__':
 
 if __name__ == '__main__':
     app.run(debug=True)
+    else:
+    content = {
+        "msg": "请登录"
+    }
+    return render_template("index.html", **content)
+
+if __name__ == '__main__':
+    app.run(debug=True)    else:
+        content = {
+            "msg":"请登录"
+        }
+        return render_template("index.html",**content)
+
+if __name__ == '__main__':
+    app.run(debug=True)    else:
+        content = {
+            "msg":"请登录"
+        }
+        return render_template("index.html",**content)
+
+if __name__ == '__main__':
+    app.run(debug=True)    else:
+        content = {
+            "msg":"请登录"
+        }
+        return render_template("index.html",**content)
+
+if __name__ == '__main__':
+    app.run(debug=True)    else:
+        content = {
+            "msg":"请登录"
+        }
+        return render_template("index.html",**content)
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+
+
+
+
+
