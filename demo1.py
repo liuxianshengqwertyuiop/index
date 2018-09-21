@@ -17,3 +17,18 @@ def sub():
 
 if __name__ == '__main__':
     app.run()
+
+
+
+    username = request.values.get('username')
+    password = request.values.get("password")
+    if username == "root" and password =="root":
+        return render_template("zz.html")
+    else:
+        content = {
+            "msg":"请登录"
+        }
+        return render_template("index.html",**content)
+
+if __name__ == '__main__':
+    app.run(debug=True)
