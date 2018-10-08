@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>sweetalter用户讲解</title>
+    <script src="../static/common/sweetalert/sweetalert.min.js"></script>
+    <script src="../static/common/sweetalert/xtalert.js"></script>
+    <script src="../static/jquery-1.11.1.min.js"></script>
+    <link href="../static/common/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<button id="notoast">
+    不带toast提示
+</button>
+
+<button id="toast">
+    带toast提示
+</button>
+
+<script>
+    $('#notoast').click(function (ev) {
+        // xtalert.alertConfirm({'msg':'你吃饭吗？'})‘
+        xtalert.alertError("你错了")
+    })
+    $('#toast').click(function (ev) {
+      xtalert.alertSuccessToast("登陆成功")
+    })
+
+</script>
+
+</body>
+</html>

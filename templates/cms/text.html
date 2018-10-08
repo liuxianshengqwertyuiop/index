@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../static/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+    <button id="sendemailCode">发送验证</button>
+    <script>
+        $(function () {
+            $('#sendemailCode').click(function (ev) {
+                console.log("点击了这个按钮")
+                self = $(this);
+                self.attr('disabled',true);
+                var time = 5;
+                self.html(time + "s") // 就是5秒
+                var timer = setInterval(function () {
+                    self.html(--time+'s');
+                    if (time <= 0) {
+                        clearInterval(timer);
+                        self.html("再次发送");
+                        self.attr('disabled',false);
+                    }
+                },1000)
+            })
+        })
+    </script>
+</body>
+</html>

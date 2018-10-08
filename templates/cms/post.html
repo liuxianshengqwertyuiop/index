@@ -1,0 +1,50 @@
+{#{% extends 'cms/base.html' %}#}
+{##}
+{#{% block title %}#}
+{#    模块管理#}
+{#{% endblock %}#}
+{##}
+{#{% block page_title %}#}
+{#    欢迎来到{{self.title()}}#}
+{#{% endblock %}#}
+{#{% block head %}#}
+{#    <script src="{{url_for('static',filename='cms/js/post.js') }}"></script>#}
+{#    <script src="https://cdn.staticfile.org/Plupload/2.1.1/moxie.js"></script>#}
+{#    <script src="https://cdn.staticfile.org/Plupload/2.1.1/plupload.dev.js"></script>#}
+{#    <script src="https://cdn.staticfile.org/qiniu-js-sdk/1.0.14-beta/qiniu.js"></script>#}
+{#{% endblock %}#}
+{#{% block  content%}#}
+{#    <div style="overflow: hidden">#}
+{#        <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal" style="float: right">添加版块#}
+{#        </button>#}
+{#    </div>#}
+{#    <table class="table table-hover">#}
+{#        <thead>#}
+{#        <tr>#}
+{#            <td>编号</td>#}
+{#            <td>创建者</td>#}
+{#            <td>标题</td>#}
+{#            <td>内容</td>#}
+{#            <td>创建时间</td>#}
+{#            <td>操作</td>#}
+{#        </tr>#}
+{#        </thead>#}
+{#        <tbody>#}
+{#        {% for post in posts %}#}
+{#            <tr>#}
+{#            <td>{{post.id }}</td>#}
+{#            <td>{{post.user.username }}</td>#}
+{#            <td>{{post.title }}</td>#}
+{#            <td>{{ post.board.boardname }}</td>#}
+{#            <td>{{ post.create_time }}</td>#}
+{#            <td>#}
+{#                <button class="btn btn-danger delete-btn" data-id="{{ post.id }}">删除</button>#}
+{#            </td>#}
+{#        </tr>#}
+{#            {% else %}#}
+{#                暂无数据#}
+{#        {% endfor %}#}
+{#        </tbody>#}
+{#    </table>#}
+{#    <br>#}
+{#{% endblock %}#}

@@ -1,0 +1,113 @@
+{% extends 'front/base.html' %}
+{% block title %} 首页{% endblock %}
+{% block header %}
+    <style>
+.post-group {
+    margin-top: 20px;
+    border: 2px solid #e6e6e6;
+    border-radius: 5px;
+    width: 65%;
+    margin-left: 150px;
+}
+.post-header ul  {
+    list-style: none;
+    overflow: hidden;
+}
+
+.post-header-li {
+    text-align: center;
+    width: 24%;
+    float: left;
+    font-size: 17px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.post-li {
+    list-style: none;
+}
+ </style>
+{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-8 col-md-offset-1">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    {% for banner in banners %}
+                        {% if loop.first %}
+                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        {% else %}
+                            <li data-target="#carousel-example-generic" data-slide-to="{{ loop.index }}"></li>
+                        {% endif %}
+                    {% endfor %}
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                    {% for banner in banners %}
+                        {% if loop.first %}
+                            <div class="item active">
+                                <img alt="Third slide [900x500]"
+                                     src="{{ banner.imglink }}"
+                                     data-holder-rendered="true">
+                            </div>
+                        {% else %}
+                            <div class="item">
+                                <img alt="Third slide [900x500]"
+                                     src="{{ banner.imglink }}"
+                                     data-holder-rendered="true">
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 " style="">
+            <a href="/addpost/" class="list-group-item list-group-item-success">发布帖子</a>
+            <div class="panel panel-default">
+                <div class="panel-heading" style="background: lightblue;text-align:center">
+                    <h3 class="panel-title">模块名称</h3>
+                </div>
+                {% for board in boards %}
+                    <a href="/?boarder_id={{ board.id }}" class="list-group-item list-group-item-success">
+                    {{ board.boardname }}
+                    <span class="badge"style="float: right">{{ board.postnum }}</span></a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="post-group">
+        <div class="post-header" style="border-bottom: 1px solid #e6e6e6">
+            <ul>
+                <li class="post-header-li"><a href="#">最新</a></li>
+                <li class="post-header-li"><a href="#">精华帖子</a></li>
+                <li class="post-header-li"><a href="#">点赞最多</a></li>
+{#                <li class="post-header-li"><a href="#">评论最多</a></li>#}
+                <li class="post-header-li"><a href="/?readcount=1">阅读量最多</a></li>
+            </ul>
+        </div>
+        <div class="post-content">
+            <ul>
+                {% for post in posts %}
+                    <li class="post-li"
+                        style="border-bottom: 1px solid #e6e6e6;overflow: hidden;padding-top: 20px;padding-bottom: 10px">
+                        <a href="/showpostdetail/?post_id={{ post.id}}">
+                        <div style="float:left;">
+                            <img style="width: 40px;height: 40px"
+                                 src="{{ url_for('static',filename='front/img/pjkj.png') }}">
+                        </div>
+                        <div style="float:left;padding-left: 20px">
+                            <div style="font-size: 18px;font-weight: 700">{{ post.title }}</div>
+                            {{ post.content | safe}}
+                            <div><span style="padding-right: 20px">作者:{{ post.user.username}}</span>
+                                <span style="padding-right: 20px;padding-left: 20px">评论:</span>
+                                <span style="padding-right: 20px;padding-left: 20px">时间:{{ post.create_time|convert}}</span>
+                                <span style="padding-right: 20px;padding-left: 20px">阅读:{{ post.readCount if post.readCount else 0}}</span>
+                            </div>
+                        </div>
+                     </a>
+                    </li>
+                  {% endfor %}
+            </ul>
+            <div style="text-align: center">{{ pagination.links }}</div>
+        </div>
+    </div>
+{% endblock %}
